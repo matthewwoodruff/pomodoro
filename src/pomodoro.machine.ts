@@ -87,17 +87,15 @@ export const pomodoroMachine = Machine<Context, AppStateSchema, Event>({
         resetTime: assign(({totalTime}) => ({
             startTime: Date.now(),
             time: totalTime,
-            totalTime
+            reminder: false,
         })),
         updateTime: assign({
             time: ({totalTime, startTime}) => getTime(totalTime, startTime)
         }),
         setWork: assign({
-            time: (context) => TWENTY_FIVE_MINS,
             totalTime: (context) => TWENTY_FIVE_MINS
         }),
         setBreak: assign({
-            time: (context) => FIVE_MINUTES,
             totalTime: (context) => FIVE_MINUTES
         }),
         showNotification: () => {
